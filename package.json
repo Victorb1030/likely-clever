@@ -1,0 +1,26 @@
+{
+  "name": "xsite",
+  "version": "1.0.0",
+  "description": "Configuration Manager",
+  "main": "server.js",
+  "scripts": {
+    "test": "\"echo \\\"Error, no text specified\\\" && exit 1\",",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Victorb1030/likely-clever.git"
+  },
+  "keywords": [
+    "xsite"
+  ],
+  "author": "Victor Buchanan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Victorb1030/likely-clever/issues"
+  },
+  "homepage": "https://github.com/Victorb1030/likely-clever#readme",
+  "dependencies": {
+    "formidable": "^1.0.17"
+  }
+}
