@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+    // ADD USER
+    h2 Modify Config
+    #addUser
+    fieldset
+        input#inputUserName(type='text', placeholder='Username')
+        input#inputUserEmail(type='text', placeholder='Email')
+        br
+        input#inputUserFullname(type='text', placeholder='Full Name')
+        input#inputUserAge(type='text', placeholder='Age')
+        br
+        input#inputUserLocation(type='text', placeholder='Location')
+        input#inputUserGender(type='text', placeholder='gender')
+        br
+        button#btnAddUser Add User
+    // /ADD USER
+
+    // CONFIG ITEM
+    br
+    h2 Current Configuration
+    #currentConfig.jsontext
+     table.table
+      tbody
+    // /CONFIG ITEM
+ 
