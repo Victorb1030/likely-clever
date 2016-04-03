@@ -1,22 +1,56 @@
 extends layout
 
 block content
+    .container-fluid
+        .jumbotron
+            h1 Config Management
 
-    // ADD USER
-    h2 Modify Config
-    #addUser
-    fieldset
-        input#inputUserName(type='text', placeholder='Username')
-        input#inputUserEmail(type='text', placeholder='Email')
-        br
-        input#inputUserFullname(type='text', placeholder='Full Name')
-        input#inputUserAge(type='text', placeholder='Age')
-        br
-        input#inputUserLocation(type='text', placeholder='Location')
-        input#inputUserGender(type='text', placeholder='gender')
-        br
-        button#btnAddUser Add User
-    // /ADD USER
+    .container
+        .row
+            .col-md-6
+                 
+                
+                 
+                // CREATE CONFIG
+                h2 Create New Config
+                #createConfig
+                    fieldset
+                        input#inputUserName(type='text', placeholder='Admin Username')
+                        br
+                        input#inputUserPassword(type='password', placeholder='Admin Password')
+                        br
+                        input#inputUserSiteId(type='text', placeholder='Site Id')
+                        br
+                        button#btnCreateConfig Create Config
+                
+                #error
+                 
+                
+                // /CREATE CONFIG
+                
+            .col-md-6
+            
+                // MODIFY CONFIG
+                h2 Modify Config
+           
+                #modifyConfig
+                    fieldset
+                        input#inputConfigHost(type='text', placeholder='host')
+                        br
+                        input#inputConfigPort( type='text', placeholder='port')
+                        br
+                        input#inputConfigUsername(type='text', placeholder='username')
+                        br
+                        input#inputConfigPassword(type='password', placeholder='password')
+                        br
+                        input#inputConfigXpbmLocation(type='text', placeholder='xpbm location')
+                        br
+                        input#inputConfigSiteId(type='text', placeholder='Site Id')
+                        br
+                        input#inputConfigSiteInterval(type='text', placeholder='Site Interval')
+                        br
+                        button#btnModifyConfig Modify Config
+                // /MODIFY CONFIG
 
     // CONFIG ITEM
     br
