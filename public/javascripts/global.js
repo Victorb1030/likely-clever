@@ -17,34 +17,37 @@ $(document).ready(function() {
 function populateConfig() {
 	
 	//Empty content string
-	var configContent = [];
+	var configContent;
 	
-	$.getJSON( '/config/config', function( data ) {
-		
-		var count = -1;
-		
-		for(var key in data){
+	$.getJSON( '/config/config', function( jsonData ) {
 
-			configContent[count++] = '<tr>';
-			configContent[count++] = '<th>' + key + '</th>';
-			configContent[count++] = '</tr>';
-			
-			for(var i = 0, size=data.key.length;  i < size; i++){
+		if( typeof jsonData == "object"){
+			$.each(jsonData, function(key, value) {
+				
+				configContent += '<tr><th colspan=3 >' + key + '</th></tr>'; 
+				
+				if( typeof value == "object"){
+										
+					$.each( value, function(key2, value2) {
 					
-				configContent[count++] = '<tr>';
-				configContent[count++] = '<th>' + pkey + '</th>';
-				configContent[count++] = '<td>' + pkey.toString + '</td>';
-				configContent[count++] = '</tr>';
-			}
-			
+						configContent += '<tr>';
+						configContent += '<th></th><th>' + key2 + '</th>';
+						
+						configContent += '<td>' + value2 + '</td>'
+						configContent += '</tr>';
+						
+					});				
+		
+				}
+				
+			});
 			
 		}
-						
+					
 		$('#currentConfig table tbody').html(configContent);
 		
 	});
 };
-
 
 
 // Add User
