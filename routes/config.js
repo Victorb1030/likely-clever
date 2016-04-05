@@ -60,14 +60,18 @@ router.post('/createConfig', function(req, res) {
     
     if( createConfigResult != true ){
         
-        res.send(
-            {  msg: "Error creating config file" }
-        );
+        res.send({  
+                error: "Error creating config file",
+                status: 500,
+        });
         
     }else {
     
         console.log("Create config result: " + createConfigResult);
-        res.send({ msg:''});
+        res.send({ 
+            success: "Successfully created config",
+            status: 200,
+        });
     }
     
 });
@@ -87,13 +91,19 @@ router.post('/modifyConfig', function(req, res) {
     
     if( writeNewConfigResult != true ){
         
-       console.log('Error creating config file');
-       res.send({  msg: "Error creating config file" });    
+        console.log('Error creating config file');
+        res.send({  
+            error: "Error creating config file in route",
+            status: '500',
+        });    
         
     }else {
     
         console.log("Write config result: " + writeNewConfigResult);
-        res.send({ msg:''});
+        res.send({ 
+            success:'Successfully modified config',
+            status: '200',
+        });
     }        
 });
 

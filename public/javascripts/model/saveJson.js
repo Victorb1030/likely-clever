@@ -3,7 +3,6 @@ var util = require('util');
 
 var writeResult = function(jsonObject) {
     var jsonString;
-    var writeResult;
   
     if(typeof(jsonObject) != 'object' ){
         
@@ -31,7 +30,7 @@ var writeResult = function(jsonObject) {
 	}
    
 
-   	writeResult = fs.writeFile('./public/json/etc/config.json', JSON.stringify(jsonItem,null,2), (err) => {
+   	fs.writeFile('./public/json/etc/config.json', JSON.stringify(jsonItem,null,2), (err) => {
         if(err) throw err;
         console.log('Saved modified config file');
     });

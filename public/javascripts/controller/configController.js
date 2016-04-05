@@ -91,21 +91,13 @@ function createConfig(event) {
             type: 'POST',
             data: credentials,
             url: '/config/createConfig',
-            dataType: 'JSON'
-        }).done(function( response ) {
-        
-            if(response.msg.search(/error/i) != -1 ){
-                
-                $('#createConfigError').html('500, Internal server error creating config');
-
-            }else {
-            
-                //Successfully created config
-                loadConfig();
-                
+            dataType: 'JSON',
+            success: function(){
                 $('#createConfigError').html('Successfully created config');
-            }
-             
+             },
+             error: function(){
+                $('#createConfigError').html('Error creating config');
+             },
         });
     }
     else {
@@ -176,7 +168,7 @@ function updateConfig(event) {
                                     jsonConfigData[key][key2] = newValue;
                                                                         
                                     //Value have changed
-                                    $('#modifyConfigError').html('Found changed value');
+                                    //$('#modifyConfigError').html('Found changed value');
                                                         
                                     var jsonConfigString = JSON.stringify(jsonConfigData);
                                                        
@@ -186,23 +178,14 @@ function updateConfig(event) {
                                         type: 'POST',
                                         data: jsonConfigString,
                                         url: '/config/modifyConfig',
-                                        dataType: 'application/text'
-                                    }).done(function( response ) {
-
-                                        // Check for successful (blank) response
-                                        if (response.msg.search(/error/i) != -1 ) {
-
-                                            $('#modifyConfigError').html('Error calling modifyConfig');
-                                             return false;
+                                        success: function(){
                                             
-                                        } else {
+                                            $('#modifyConfigError').html('Successfully changed config');
+                                        },
                                         
-                                            $('#modifyConfigError').html("Successfully modified Config");
-                                           // Update the config on the page
-                                            loadConfig();
-                                            return true;
-                                        }
-                                    });
+                                    });                                      
+                                                                        
+                                    loadConfig();
                                 }
                             }						
                         });

@@ -449,7 +449,7 @@ input[type="text"], input[type="password"], select, textarea {
     color: #555;
     display: inline-block;
     font-size: 13px;
-    height: 20px;
+    height: 30px;
     margin: 0 0 1em;
     padding: 4px 6px;
     transition: all 0.2s ease-out 0s;
