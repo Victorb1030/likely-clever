@@ -1,12 +1,12 @@
 var express = require('express');
-
+var util    = require('util');
 var findFile;
 var saveJson;
 var createConfig;
 
 try{
 	// check path of require
-	findFile = require('../public/javascripts/getFile');
+	findFile = require('../public/javascripts/model/getFile');
     
 }
 catch(e){
@@ -14,7 +14,7 @@ catch(e){
 }
 
 try{
-    saveJson = require('../public/javascripts/saveJson');
+    saveJson = require('../public/javascripts/model/saveJson');
 }
 catch(e) {
     console.log("Can't find saveJson script, current dir:"+ __dirname + e);
@@ -23,7 +23,7 @@ catch(e) {
 
 try{
     //check path of require
-    createFile = require('../public/javascripts/createConfig');
+    createFile = require('../public/javascripts/model/createConfig');
 }
 catch(e){
     console.log("Can't find createConfig script, current dir:"+ __dirname + e);
@@ -46,8 +46,7 @@ router.get('/config', function(req, res) {
 		
 });
 
-// TODO router.post('/createConfig', function(req,res) {
-// Add resource to call external createConfig ******* CreateConfig module
+// Call external createConfig  module
 // takes in params user/password/siteid
 // waits to for success response from method
 // returns success response uppon completion
@@ -55,38 +54,47 @@ router.get('/config', function(req, res) {
 router.post('/createConfig', function(req, res) {
     var createConfigResult;
     
-    console.log(JSON.stringify(req.body));
+    //console.log(JSON.stringify(req.body));
     
     createConfigResult = createFile.createFileResult(req.body);
     
-    if(createConfigResult != true){
+    if( createConfigResult != true ){
         
         res.send(
             {  msg: "Error creating config file" }
         );
+        
+    }else {
+    
+        console.log("Create config result: " + createConfigResult);
+        res.send({ msg:''});
     }
-    
-    console.log("Create config result: " + createConfigResult);
-    
     
 });
 
 
 /*
- * POST to.
- *  ******************* SaveConfig module
-router.post('/adduser', function(req, res) {
+ * POST to save config file
+ */
+ 
+router.post('/modifyConfig', function(req, res) {
 	
-	TODO setup to call external writeJson file
-	
-    var db = req.db;
-    var collection = db.get('userlist');
-    collection.insert(req.body, function(err, result){
-        res.send(
-            (err === null) ? { msg: '' } : { msg: err }
-        );
-    });
+	var writeNewConfigResult;
+    
+    console.log(util.inspect(req.body));
+    
+    writeNewConfigResult = saveJson.writeResult(req.body);
+    
+    if( writeNewConfigResult != true ){
+        
+       console.log('Error creating config file');
+       res.send({  msg: "Error creating config file" });    
+        
+    }else {
+    
+        console.log("Write config result: " + writeNewConfigResult);
+        res.send({ msg:''});
+    }        
 });
-*/
 
 module.exports = router;

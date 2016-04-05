@@ -5,9 +5,9 @@ var createFileResult = function buildConfigFile( credentials ) {
 	
     var username = credentials.username;
     var pass     = credentials.pass;
-    var site_id  = credentials.site_id;
+    var siteId  = credentials.siteId;
     
-	var command = 'node configure.js ' + username + ' ' + pass + ' ' + site_id;
+	var command = 'node configure.js ' + username + ' ' + pass + ' ' + siteId;
 	
 	console.log(command);
     
@@ -18,11 +18,10 @@ var createFileResult = function buildConfigFile( credentials ) {
 			
 			if( error !== null ) {
 				console.log(`exec error: ${error}`);
-                return false;
+                return `${error}`;
 			}
 	});
-    return true;
-       
+    return true;      
 }
 
 exports.createFileResult = createFileResult;

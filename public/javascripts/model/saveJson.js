@@ -1,4 +1,5 @@
 var fs = require('fs');
+var util = require('util');
 
 var writeResult = function(jsonObject) {
     var jsonString;
@@ -9,22 +10,34 @@ var writeResult = function(jsonObject) {
         console.error("jsonObject not a defined object");
         return false;
     }
+    
+    var jsonString = "";
+    
+    for(var key in jsonObject){
+        
+        jsonString = key;
+    }
   
-	try{
-        jsonString = JSON.stringify(jsonObject, null, 4);
-	        
+  
+  	try{
+        var jsonItem = JSON.parse(jsonString);
+	    console.log("JSON:" + JSON.stringify(jsonItem,null,2));
+        
+        
 	} catch (e){
 	
 		console.log('Unable to save file with: ' + e);
         throw e;
 	}
-    
-   	writeResult = fs.writeFile('./public/json/etc/config.json', jsonString, (err) => {
+   
+
+   	writeResult = fs.writeFile('./public/json/etc/config.json', JSON.stringify(jsonItem,null,2), (err) => {
         if(err) throw err;
         console.log('Saved modified config file');
     });
-	
+
+    
 	return true;
 };
 
-exports.writeResults = writeResult;
+exports.writeResult = writeResult;

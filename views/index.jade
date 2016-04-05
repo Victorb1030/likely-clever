@@ -7,9 +7,7 @@ block content
 
     .container
         .row
-            .col-md-6
-                 
-                
+            .col-md-4
                  
                 // CREATE CONFIG
                 h2 Create New Config
@@ -23,12 +21,10 @@ block content
                         br
                         button#btnCreateConfig Create Config
                 
-                #error
-                 
-                
+                #createConfigError
                 // /CREATE CONFIG
                 
-            .col-md-6
+            .col-md-4
             
                 // MODIFY CONFIG
                 h2 Modify Config
@@ -43,6 +39,8 @@ block content
                         br
                         input#inputConfigPassword(type='password', placeholder='password')
                         br
+                        // input#inputConfigApiPort(type='text', placeholder='api port')
+                        // br
                         input#inputConfigXpbmLocation(type='text', placeholder='xpbm location')
                         br
                         input#inputConfigSiteId(type='text', placeholder='Site Id')
@@ -50,13 +48,26 @@ block content
                         input#inputConfigSiteInterval(type='text', placeholder='Site Interval')
                         br
                         button#btnModifyConfig Modify Config
+                       // br
+                       // input#inputConfigSiteClientId(type='text', placeholder='Site Client Id')
+                       // br
+                       // input#inputConfigSiteExternalId(type='text', placeholder='Site External Id')
+                       // br
+                       // input#inputConfigTransferSource(type='text', placeholder='Transfer Source')
+                       // br
+                       // input#inputConfigTransferMatcher(type='text', placeholder='Transfer Matcher')
+                       
+                #modifyConfigError
                 // /MODIFY CONFIG
 
     // CONFIG ITEM
-    br
-    h2 Current Configuration
-    #currentConfig.jsontext
-     table.table
-      tbody
+    .container
+        .row
+            .col-md-4
+                h2 Current Configuration
+                #currentConfig.jsontext
+                    table.table
+                        tbody
+                #loadConfigError
     // /CONFIG ITEM
  
