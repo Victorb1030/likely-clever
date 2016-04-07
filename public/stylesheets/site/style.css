@@ -304,8 +304,8 @@ div.feature .row {
     margin: 0 0 0.5em;
 }
 .content {
-    background: rgba(0, 0, 0, 0) url("/images/181/content-bg.png") repeat-x scroll 0 0;
-    padding: 0;
+    padding: 2em 0;
+    background: url(/images/348/groovepaper.png);
 }
 .content .row {
     overflow: visible;
@@ -327,6 +327,10 @@ div.feature .row {
     min-height: 628px;
     padding-left: 40px;
 }
+.jumbotron {
+    background-color: inherit;
+}
+
 div.sidenav {
     font-size: 14px;
     margin: 0;

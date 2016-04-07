@@ -6,7 +6,7 @@ var createConfig;
 
 try{
 	// check path of require
-	findFile = require('../public/javascripts/model/getFile');
+	getFile = require('../lib/fileManipulation/getFile');
     
 }
 catch(e){
@@ -14,7 +14,7 @@ catch(e){
 }
 
 try{
-    saveJson = require('../public/javascripts/model/saveJson');
+    saveJson = require('../lib/fileManipulation/saveJson');
 }
 catch(e) {
     console.log("Can't find saveJson script, current dir:"+ __dirname + e);
@@ -23,7 +23,7 @@ catch(e) {
 
 try{
     //check path of require
-    createFile = require('../public/javascripts/model/createConfig');
+    createConfig = require('../lib/fileManipulation/createConfig');
 }
 catch(e){
     console.log("Can't find createConfig script, current dir:"+ __dirname + e);
@@ -38,7 +38,7 @@ var router = express.Router();
 router.get('/config', function(req, res) {
     var configJson;
 
-	configJson = findFile.findResults();
+	configJson = getFile.findResults();
 		
 	//console.log("Config JSON: " + configJson);
 	
@@ -56,24 +56,12 @@ router.post('/createConfig', function(req, res) {
     
     //console.log(JSON.stringify(req.body));
     
-    createConfigResult = createFile.createFileResult(req.body);
+    createConfigResult = createConfig.createFileResult(req.body);
+  
+    //console.log(util.inspect(createConfigResult));
     
-    if( createConfigResult != true ){
-        
-        res.send({  
-                error: "Error creating config file",
-                status: 500,
-        });
-        
-    }else {
-    
-        console.log("Create config result: " + createConfigResult);
-        res.send({ 
-            success: "Successfully created config",
-            status: 200,
-        });
-    }
-    
+
+    res.send({success:createConfigResult, status: '200'});
 });
 
 
