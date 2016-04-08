@@ -1,9 +1,11 @@
 {
-  "name": "nodetest2",
-  "version": "0.0.0",
+  "name": "SetupConfig",
+  "version": "0.0.4",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "install-windows-service": "winser -i",
+    "uninstall-windows-service": "winser -r"
   },
   "dependencies": {
     "body-parser": "^1.13.2",
@@ -15,6 +17,8 @@
     "serve-favicon": "^2.3.0",
     "mongodb": "^1.4.4",
     "monk": "^1.0.1",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "deasync" : "^0.1.4",
+    "winser" : "^1.0.2"
  }
 }
