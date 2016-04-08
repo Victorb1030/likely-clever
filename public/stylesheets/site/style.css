@@ -1,5 +1,5 @@
 @import "../images/181/1140.css";
-@import "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css";
+@import "../bootstrap.css";
 @import "http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700";
 
 body {
@@ -138,12 +138,20 @@ a img.aligncenter:hover {
     text-shadow: none;
 }
 header[role="banner"] {
-    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%) repeat scroll 0 0;
-    color: #496984;
-    padding: 12px 0;
-    text-shadow: 0 1px 1px #fff;
+	padding-top: 24px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 30px;
+	width: 100%;
+    background: url(/images/348/groovepaper.png);
+	top: 0;
+	z-index: 999;
+	-moz-transition: all 0.2s ease-out;
+	-webkit-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;
 }
-header .logo, header .tagline {
+
+header.banner, header .tagline {
     float: left;
 }
 header .tagline {
@@ -597,7 +605,7 @@ footer a.cmsi:hover {
 }
 @media handheld, only screen and (max-width: 767px) {
 header {
-    height: 170px;
+    height: 10px;
     text-align: center;
 }
 header .last {

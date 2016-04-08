@@ -38,12 +38,16 @@ var router = express.Router();
 router.get('/config', function(req, res) {
     var configJson;
 
-	configJson = getFile.findResults();
-		
-	//console.log("Config JSON: " + configJson);
+	configJson = getFile.findResults(req.appConfig);
 	
-	res.json(configJson);
-		
+    if(configJson.error != undefined){
+        
+        res.send({error:configJson.error, status: '500'});
+    }else {
+
+        res.json(configJson);
+    }      
+
 });
 
 // Call external createConfig  module
@@ -56,12 +60,17 @@ router.post('/createConfig', function(req, res) {
     
     //console.log(JSON.stringify(req.body));
     
-    createConfigResult = createConfig.createFileResult(req.body);
-  
-    //console.log(util.inspect(createConfigResult));
+    createConfigResult = createConfig.createFileResult(req.body, req.appConfig);
     
+    console.log(util.inspect(createConfigResult.error));
+    
+    if(createConfigResult.error != undefined){
+        
+        res.send({msg:createConfigResult.error, status: '500'});
+    }else {
 
-    res.send({success:createConfigResult, status: '200'});
+        res.send({msg:createConfigResult, status: '200'});
+    }            
 });
 
 
@@ -75,24 +84,16 @@ router.post('/modifyConfig', function(req, res) {
     
     console.log(util.inspect(req.body));
     
-    writeNewConfigResult = saveJson.writeResult(req.body);
+    writeNewConfigResult = saveJson.writeResult(req.body, req.appConfig);
     
-    if( writeNewConfigResult != true ){
+    if(writeNewConfigResult.error != undefined){
         
-        console.log('Error creating config file');
-        res.send({  
-            error: "Error creating config file in route",
-            status: '500',
-        });    
-        
+        res.send({error:writeNewConfigResult.error, status: '500'});
     }else {
-    
-        console.log("Write config result: " + writeNewConfigResult);
-        res.send({ 
-            success:'Successfully modified config',
-            status: '200',
-        });
-    }        
+
+        res.send({success:writeNewConfigResult, status: '200'});
+    }      
+  
 });
 
 module.exports = router;
