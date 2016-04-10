@@ -6,7 +6,7 @@ var createConfig;
 
 try{
 	// check path of require
-	getFile = require('../lib/fileManipulation/getFile');
+	getFile = require('../lib/fileManipulation/GetFile');
     
 }
 catch(e){
@@ -14,7 +14,7 @@ catch(e){
 }
 
 try{
-    saveJson = require('../lib/fileManipulation/saveJson');
+    saveJson = require('../lib/fileManipulation/SaveJson');
 }
 catch(e) {
     console.log("Can't find saveJson script, current dir:"+ __dirname + e);
@@ -23,7 +23,7 @@ catch(e) {
 
 try{
     //check path of require
-    createConfig = require('../lib/fileManipulation/createConfig');
+    createConfig = require('../lib/fileManipulation/CreateConfig');
 }
 catch(e){
     console.log("Can't find createConfig script, current dir:"+ __dirname + e);
@@ -62,7 +62,7 @@ router.post('/createConfig', function(req, res) {
     
     createConfigResult = createConfig.createFileResult(req.body, req.appConfig);
     
-    console.log(util.inspect(createConfigResult.error));
+    //console.log(util.inspect(createConfigResult.error));
     
     if(createConfigResult.error != undefined){
         
@@ -82,7 +82,7 @@ router.post('/modifyConfig', function(req, res) {
 	
 	var writeNewConfigResult;
     
-    console.log(util.inspect(req.body));
+    //console.log(util.inspect(req.body));
     
     writeNewConfigResult = saveJson.writeResult(req.body, req.appConfig);
     
