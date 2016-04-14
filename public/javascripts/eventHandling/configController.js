@@ -132,18 +132,21 @@ function createConfig(event) {
                     var responseString = response.msg;
                                                   
                     $('#createConfigError').html('<pre>' + responseString + '</pre>');
-                
+           
+                    loadConfig();
+                    
                 }else {
                  
                     $('#createConfigError').html('Failed to get result from createConfig resource');
+                    loadConfig();
                 }
             },
             error: function(response){
-                $('#createConfigError').html("ERROR");
+                $('#createConfigError').html("ERROR: " + response.msg);
+                loadConfig();
             }
         });
-        
-        
+                
     }
     else {
         // If errorCount is more than 0, error out

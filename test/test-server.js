@@ -4,16 +4,25 @@ var server = require('../app.js');
 var should = chai.should();
 var expect = chai.expect;
 var createConfig = require('../lib/fileManipulation/CreateConfig');
+var fs = require('fs');
+
+var util = require('util');
+
+var configLocation = 'test/testConfig/config.json';
+
+var testConfig = fs.readFileSync(configLocation);
+
+var jsonConfig = JSON.parse(testConfig);
 
 chai.use(chaiHttp);
 
 describe('Config', function(){
-	it('should list a single config on /config/config GET');
+	it('should list a config on /config/config GET');
 	it('should create config on /config/createConfig POST');
 	it('should update config on /config/modifyConfig POST');
 });
 
-it('should list a single config on /config/config GET', function(done) {
+it('should list a config on /config/config GET', function(done) {
 	
 	chai.request(server)
 		.get('/config/config')
@@ -28,7 +37,6 @@ it('should list a single config on /config/config GET', function(done) {
 
 });
 
-/*
 it('should create config on /config/createConfig POST', function(done){
 
 	this.timeout(10000);
@@ -47,14 +55,13 @@ it('should create config on /config/createConfig POST', function(done){
 		});
 
 });
-*/
 
 
 it('should update config on /config/modifyConifg POST', function(done){
 
 	chai.request(server)
 		.post('/config/modifyConfig')
-		.send({})
+		.send(JSON.stringify(jsonConfig))
 		.end(function(err, res){
 			
 			res.should.have.status(200);
@@ -88,7 +95,30 @@ describe('CreateConfig', function() {
 
 
 
+describe('GetFile', function(){
+	it('findResults() should return a json object containing config data', function(){
+	
+	
+		var config = {
+		
+			configLocation : 'test/testConfig/config.json'
+		};
+		
+	
+		expect(getFile.findResults(config)).to.be.a('object');
 
+		// Verify contents of config file
+
+
+		
+
+		console.log(util.inspect(getFile.findResults(config)));
+	
+	});
+
+
+
+});
 
 
 
