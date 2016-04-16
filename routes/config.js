@@ -62,7 +62,7 @@ router.post('/createConfig', function(req, res) {
     
     createConfigResult = createConfig.createFileResult(req.body, req.appConfig);
     
-    //console.log(util.inspect(createConfigResult.error));
+    console.log(util.inspect(createConfigResult.error));
     
     if(createConfigResult.error != undefined){
         
