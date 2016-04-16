@@ -2,96 +2,101 @@ extends layout
 
 block content
   .content
-    .container-fluid
-        .jumbotron
-            h1 Config Management
-
-    .container
-        .row
-            .col-md-4
-                 
-                // CREATE CONFIG
-                h2 Create New Config
-                #createConfig
-                    fieldset
-                        input#inputUserName(type='text', placeholder='Admin Username')
-                        br
-                        input#inputUserPassword(type='password', placeholder='Admin Password')
-                        br
-                        input#inputUserSiteId(type='text', placeholder='Site Id')
-                        br
-                        button#btnCreateConfig Create Config
-                
-                #createConfigError
-                // /CREATE CONFIG
-                
-    
-            .col-md-4
+    .tab-content
+        #configure.tab-pane.fade.in.active
+            .container
+                .row
+                    .col-md-4
+                         
+                        // CREATE CONFIG
+                        h2 Create New Config
+                        #createConfig
+                            fieldset
+                                input#inputUserName(type='text', placeholder='Admin Username')
+                                br
+                                input#inputUserPassword(type='password', placeholder='Admin Password')
+                                br
+                                input#inputUserSiteId(type='text', placeholder='Site Id')
+                                br
+                                button#btnCreateConfig Create Config
+                        
+                        #createConfigError
+                        // /CREATE CONFIG
+                        
             
-                // MODIFY CONFIG
-                h2 Modify Config
-           
-                #modifyConfig
-                    fieldset
-                        input#inputConfigHost(type='text', placeholder='host')
-                        br
-                        input#inputConfigPort( type='text', placeholder='port')
-                        br
-                        input#inputConfigUsername(type='text', placeholder='username')
-                        br
-                        input#inputConfigPassword(type='password', placeholder='password')
-                        br
-                        input#inputConfigApiPort(type='text', placeholder='api port')
-                        br
-                        input#inputConfigXpbmLocation(type='text', placeholder='xpbm location')
-                        br
-                        input#inputConfigSiteId(type='text', placeholder='Site Id')
-                        br
-                        input#inputConfigSiteInterval(type='text', placeholder='Site Interval')
-                        br
-                        input#inputConfigSiteClientId(type='text', placeholder='Site Client Id')
-                        br
-                        input#inputConfigSiteExternalId(type='text', placeholder='Site External Id')
-                        br
-                        input#inputConfigSitePos(type='text', placeholder='Site Pos')
-                        br
-                        input#inputConfigTransferSource(type='text', placeholder='Transfer Source')
-                        br
-                     
-                        a(data-toggle='collapse', href='#collapse1') Expand Matcher Settings
+                    .col-md-4
                     
-                    #collapse1.panel-collapse.collapse
-                       
-                        fieldset
-                            input#inputConfigMatcherFgm(type='text', placeholder='Matcher Fgm')
-                            br
-                            input#inputConfigMatcherMcm(type='text', placeholder='Matcher Mcm')
-                            br
-                            input#inputConfigMatcherMsm(type='text', placeholder='Matcher Msm')
-                            br
-                            input#inputConfigMatcherIsm(type='text', placeholder='Matcher Ism')
-                            br
-                            input#inputConfigMatcherTpm(type='text', placeholder='Matcher Tpm')
-                            br
-                            input#inputConfigMatcherTlm(type='text', placeholder='Matcher Tlm')
-                            br
-                            input#inputConfigMatcherVcd(type='text', placeholder='Matcher Vcd')
-                            br
-                            input#inputConfigMatcherFgm(type='text', placeholder='Matcher Fgm')
-                            br
-                    button#btnModifyConfig Modify Config
-                      
-                        
-                        
-                #modifyConfigError
-                // /MODIFY CONFIG
+                        // MODIFY CONFIG
+                        h2 Modify Config
+                   
+                        #modifyConfig
+                            fieldset
+                                input#inputConfigHost(type='text', placeholder='host')
+                                br
+                                input#inputConfigPort( type='text', placeholder='port')
+                                br
+                                input#inputConfigUsername(type='text', placeholder='username')
+                                br
+                                input#inputConfigPassword(type='password', placeholder='password')
+                                br
+                                input#inputConfigApiPort(type='text', placeholder='api port')
+                                br
+                                input#inputConfigXpbmLocation(type='text', placeholder='xpbm location')
+                                br
+                                input#inputConfigSiteId(type='text', placeholder='Site Id')
+                                br
+                                input#inputConfigSiteInterval(type='text', placeholder='Site Interval')
+                                br
+                                input#inputConfigSiteClientId(type='text', placeholder='Site Client Id')
+                                br
+                                input#inputConfigSiteExternalId(type='text', placeholder='Site External Id')
+                                br
+                                input#inputConfigSitePos(type='text', placeholder='Site Pos')
+                                br
+                                input#inputConfigTransferSource(type='text', placeholder='Transfer Source')
+                                br
+                             
+                                a(data-toggle='collapse', href='#collapse1') Expand Matcher Settings
+                            
+                            #collapse1.panel-collapse.collapse
+                               
+                                fieldset
+                                    input#inputConfigMatcherFgm(type='text', placeholder='Matcher Fgm')
+                                    br
+                                    input#inputConfigMatcherMcm(type='text', placeholder='Matcher Mcm')
+                                    br
+                                    input#inputConfigMatcherMsm(type='text', placeholder='Matcher Msm')
+                                    br
+                                    input#inputConfigMatcherIsm(type='text', placeholder='Matcher Ism')
+                                    br
+                                    input#inputConfigMatcherTpm(type='text', placeholder='Matcher Tpm')
+                                    br
+                                    input#inputConfigMatcherTlm(type='text', placeholder='Matcher Tlm')
+                                    br
+                                    input#inputConfigMatcherVcd(type='text', placeholder='Matcher Vcd')
+                                    br
+                                    input#inputConfigMatcherFgm(type='text', placeholder='Matcher Fgm')
+                                    br
+                            button#btnModifyConfig Modify Config
+                              
+                                
+                                
+                        #modifyConfigError
+                        // /MODIFY CONFIG
 
-            // CONFIG ITEM
-            .col-md-4
-                h2 Current Configuration
-                #currentConfig.jsontext
-                    table.table
-                        tbody
-                #loadConfigError
-            // /CONFIG ITEM
+                    // CONFIG ITEM
+                    .col-md-4
+                        h2 Current Configuration
+                        #currentConfig.jsontext
+                            table.table
+                                tbody
+                        #loadConfigError
+                    // /CONFIG ITEM
  
+        #service.tab-pane.fade
+            .container
+                button#btnRestartService Restart Windows Service
+                
+        #export.tab-pane.fade
+            .container
+                .button#btnRunExport Export Data

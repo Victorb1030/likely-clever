@@ -19,4 +19,25 @@ body
             img(width="260" hight="auto" src='images/xsite_group_colour.png', alt='XSite Group')
         // /medium-4
         
+    .container
+      .row
+        .board
+          .board-inner
+            ul#myTab.nav.nav-tabs
+              .liner
+              li.active
+                a(href='#configure', data-toggle='tab', title='config editer') Config Setup
+              li
+                a(href='#service', data-toggle='tab', title='service') Service Management
+              li
+                a(href='#export', data-toggle='tab', title='export data') Export Data
+              li
+                a(href='#settings', data-toggle='tab', title='blah blah')
+                  span.round-tabs.four
+                    i.glyphicon.glyphicon-comment
+              li
+                a(href='#doner', data-toggle='tab', title='completed')
+                  span.round-tabs.five
+                    i.glyphicon.glyphicon-ok
+        
     block content
