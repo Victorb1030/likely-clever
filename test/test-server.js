@@ -101,7 +101,7 @@ describe('GetFile', function(){
 	
 		var config = {
 		
-			configLocation : 'test/testConfig/config.json'
+			configLocation : '/../../test/testConfig/config.json'
 		};
 		
 	
